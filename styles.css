@@ -1,0 +1,372 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Vertical Navigation */
+nav {
+    background: #333;
+    height: 100vh; /* Full viewport height */
+    position: fixed;
+    width: 200px; /* Set a width for the vertical nav */
+    top: 0;
+    left: 0; /* Stick it to the left side of the screen */
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 50px;
+}
+
+/* Logo styling */
+nav .logo img {
+    width: 100px; /* Adjust the width of the logo */
+    border-radius: 50%;
+    object-fit: cover;
+    height: 100px; /* Keep aspect ratio */
+    display: block; /* Ensure it's treated as a block element */
+    margin: 0 auto; /* Center the logo */
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Zoom in on hover */
+nav .logo img:hover {
+    transform: scale(1.1); /* Zoom in 10% */
+}
+
+nav .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column; /* Stack the links vertically */
+}
+
+nav ul li {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px;
+    display: block;
+    transition: background 0.3s ease;
+}
+
+/* Focus states for better accessibility */
+nav ul li a:focus, nav .logo a:focus {
+    outline: 2px solid #102372; /* Visible outline on focus */
+    outline-offset: 4px;
+}
+
+nav ul li a:hover {
+    background-color: #102372;
+    border-radius: 5px;
+}
+
+nav ul li a.active,
+nav .logo a.active {
+    background-color: #102372; /* Change background when active */
+    color: #fff; /* Ensure the text is readable */
+    border-radius: 5px;
+}
+
+/* Responsive Navbar for Mobile */
+@media (max-width: 768px) {
+    nav {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: space-around;
+        padding-top: 0;
+    }
+
+    /* Remove margin-left for narrow screens */
+    .container {
+        margin-left: 0 !important; /* Ensure content aligns properly on mobile */
+        padding: 20px;
+    }
+
+    /* Make contact-info list vertical */
+    .contact-info {
+        flex-direction: column; /* Stack items vertically */
+        gap: 20px; /* Adjust gap for vertical layout */
+        align-items: center; /* Center the items vertically */
+    }
+
+    .contact-info li {
+        font-size: 1em; /* Adjust font size slightly for mobile */
+    }
+}
+
+/* Content to the right of the nav bar */
+.container {
+    margin-left: 220px; /* Push content to the right to account for the navbar width */
+    padding: 20px;
+}
+
+/* Hero Section */
+#hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+/* Add an overlay to darken the background */
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darkens the background image */
+    z-index: 1;
+}
+
+#hero .container {
+    position: relative;
+    z-index: 2; /* Ensure the content is above the overlay */
+}
+
+#hero h1 {
+    font-size: 3em;
+    font-weight: 700;
+}
+
+#hero span {
+    color: #102372;
+}
+
+#hero p {
+    font-size: 1.2em;
+}
+
+#hero .btn {
+    padding: 10px 20px;
+    background-color: #102372;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 60px; /* Adjusted margin to add more space */
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+#hero .btn:hover {
+    background-color: #00007c;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* About Section */
+#about {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+#about h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #102372;
+}
+
+#about .about-content {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+/* Skills Section */
+#skills {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+#skills h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #102372;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+    text-align: center;
+}
+
+.skill {
+    background: #fff;
+    padding: 20px 0px 0px 0px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.skill img {
+    height: 50px;
+    width: 50px; /* Adjust size based on your image */
+    object-fit: contain;
+    margin-bottom: 10px;
+}
+
+.skill span {
+    margin-top: 10px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: #333;
+}
+
+.skill:hover {
+    transform: translateY(-10px);
+}
+
+/* Projects Section */
+#projects {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+#projects h2 {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #102372;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.project-item {
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.project-item:hover {
+    transform: translateY(-10px);
+}
+
+.project-item h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.project-item p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.project-item .btn {
+    padding: 10px 20px;
+    background-color: #102372;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.project-item .btn:hover {
+    background-color: #00007c;
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Contact Section */
+#contact {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+#contact h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: #102372;
+}
+
+#contact p {
+    margin-bottom: 40px;
+}
+
+.contact-info {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px; /* Space between list items */
+}
+
+.contact-info li {
+    font-size: 1.2em;
+}
+
+.contact-info li a {
+    color: #102372;
+    text-decoration: none;
+}
+
+.contact-info li a:hover {
+    color: #00007c;
+}
+
+/* Mobile adjustments for contact-info */
+@media (max-width: 768px) {
+    .contact-info {
+        flex-direction: column; /* Stack items vertically */
+        gap: 20px; /* Adjust gap for vertical layout */
+        align-items: center; /* Center the items vertically */
+    }
+
+    .contact-info li {
+        font-size: 1em; /* Adjust font size slightly for mobile */
+    }
+}
+
+/* Footer */
+footer {
+    padding: 20px 0;
+    background-color: #333;
+    text-align: center;
+    color: #fff;
+}
